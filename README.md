@@ -14,8 +14,8 @@ _Page creates a TODO list_
 ## SPEC
 | Spec                                        | Input                        | Output                           |
 |---------------------------------------------|------------------------------|----------------------------------|
-| take string and create an object            | "string"                     | {todo:"string",id=1}             |
-| insert Object into a TODO objects array     | {todo:"string",isDone:false} | {todos:[{todo:"string",id=1} ]}; |
+| take string and create an object            | "string"                     | {todo:"string"}            |
+| insert Object into a TODO objects array     | {todo:"string"} | {todos:[{todo:"string",id=1} ]}; |
 | remove value from TODO's array using its id | 1                            | {todos:[]};                      |
 |                                             |                              |                                  |
 
