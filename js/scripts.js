@@ -1,19 +1,17 @@
-function todoList(){
+function TodoList(){
   this.counter = 0;
   this.todos = [];
 }
 
-todoList.prototype.addTodo = function(todo){
+TodoList.prototype.addTodo = function(todo){
   todo.id = ++this.counter;
   this.todos.push(todo);
 }
 
+var todoList = new TodoList();
+
 function todoObj(string){
   this.string = string;
-}
-
-function convertStringToTodoObject(string){
-  return new todoObj(string);  
 }
 
 function insertObjectIntoTodoArray(todo,list){
@@ -29,11 +27,16 @@ function removeTodoListObject(number,todoList){
  }
 }
 
+function createObjectAndInsertIntoList(input){
+  var todo = new todoObj(input);
+  todoList.addTodo(todo);
+  console.log(todoList);
+}
+
 $(document).ready(function(){
-  var list = new todoList();
-  var todo = convertStringToTodoObject("my first string");
-  insertObjectIntoTodoArray(todo,list);
-  console.log(list);
-  removeTodoListObject(1,list);
-  console.log(list)
+  $("form").submit(function(e){
+    e.preventDefault();
+    var input = $("input").val();
+    createObjectAndInsertIntoList(input);
+  })
 });
