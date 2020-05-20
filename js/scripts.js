@@ -8,14 +8,14 @@ TodoList.prototype.addTodo = function(todo){
   this.todos.push(todo);
 }
 
+TodoList.prototype.getLastTodo = function(){
+  return this.todos[this.todos.length - 1];
+}
+
 var todoList = new TodoList();
 
 function todoObj(string){
   this.string = string;
-}
-
-function insertObjectIntoTodoArray(todo,list){
-  list.addTodo(todo);
 }
 
 function removeTodoListObject(number,todoList){
@@ -30,7 +30,6 @@ function removeTodoListObject(number,todoList){
 function createObjectAndInsertIntoList(input){
   var todo = new todoObj(input);
   todoList.addTodo(todo);
-  console.log(todoList);
 }
 
 $(document).ready(function(){
@@ -38,5 +37,11 @@ $(document).ready(function(){
     e.preventDefault();
     var input = $("input").val();
     createObjectAndInsertIntoList(input);
+
+
+    var id = todoList.getLastTodo().id;
+    var todo = todoList.getLastTodo().string;
+    $("ul").append("<li>" + todo + "</li>");
   })
+
 });
