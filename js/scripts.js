@@ -13,7 +13,7 @@ function todo(string){
 }
 
 convertStringToTodoObject(string){
-  return new todo(string); 
+  return new todo(string);  
 }
 
 
