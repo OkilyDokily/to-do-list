@@ -18,12 +18,14 @@ function todoObj(string){
   this.string = string;
 }
 
-function removeTodoListObject(number,todoList){
+function removeTodoListObject(number){
  for(var i = 0; i < todoList.todos.length; i++){
-  if (todoList.todos[i].id === number){
-    delete todoList.todos[i]
-    break;
-  } 
+  if(todoList.todos[i]){
+    if (todoList.todos[i].id === number){
+      delete todoList.todos[i]
+      break;
+    } 
+  }
  }
 }
 
@@ -41,7 +43,13 @@ $(document).ready(function(){
 
     var id = todoList.getLastTodo().id;
     var todo = todoList.getLastTodo().string;
-    $("ul").append("<li>" + todo + "</li>");
+
+    $("ul").append("<li id='todo"  + id + "'" +">" + todo + "</li>");
+    $("#todo" + id).append("<button>Remove Item</button>");
+    $("#todo"+ id + " button").click(function(){
+       removeTodoListObject(id);
+       console.log(todoList);
+    })
   })
 
 });
