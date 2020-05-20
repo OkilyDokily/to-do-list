@@ -12,9 +12,14 @@ function todo(string){
   this.string = string;
 }
 
-convertStringToTodoObject(string){
+function convertStringToTodoObject(string){
   return new todo(string);  
 }
+
+function insertObjectIntoTodoArray(todo){
+  todoList.addTodo(todo)
+}
+
 
 
 $(document).ready(function{}){
