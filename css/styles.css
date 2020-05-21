@@ -1,0 +1,21 @@
+li button {
+  margin-left: 20px;
+  float: right;
+}
+
+li{
+  list-style: none;
+  border: 1px solid green;
+  height: 29px;
+  background-color: lightgreen;
+  color: darkblue;
+  width: 500px;
+  padding-left: 10px;
+}
+
+body{
+  background-color: aliceblue;
+}
+.container {
+  margin-top: 30px;
+}

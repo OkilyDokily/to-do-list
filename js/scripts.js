@@ -37,19 +37,24 @@ function createObjectAndInsertIntoList(input){
 $(document).ready(function(){
   $("form").submit(function(e){
     e.preventDefault();
+    clearResults();
     var input = $("input").val();
     createObjectAndInsertIntoList(input);
-
-
-    var id = todoList.getLastTodo().id;
-    var todo = todoList.getLastTodo().string;
-
-    $("ul").append("<li id='todo"  + id + "'" +">" + todo + "</li>");
-    $("#todo" + id).append("<button>Remove Item</button>");
-    $("#todo"+ id + " button").click(function(){
-       removeTodoListObject(id);
-       console.log(todoList);
-    })
+    refresh();
   })
+  function refresh(){
+    todoList.todos.forEach(function(todo){
+      $("ul").append("<li id='todo"  + todo.id + "'" +">" + todo.string + "</li>");
+      $("#todo" + todo.id).append("<button>Remove Item</button>");
+      $("#todo"+ todo.id + " button").click(function(){
+         removeTodoListObject(todo.id); 
+         clearResults()
+         refresh();  
+      })
+    })  
+  }
+  function clearResults(){
+    $("li").remove();
+  }
 
 });
